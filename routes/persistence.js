@@ -21,6 +21,7 @@ function writeAll(data)
 
 function truncate()
 {
+    fs.writeFileSync("todo.list.backup",JSON.stringify(readAll()));
     writeAll([]);
 }
 module.exports = {
