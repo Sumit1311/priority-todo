@@ -1,0 +1,30 @@
+extends layout
+
+block content
+ h1= title
+ table
+   td Sr. No. 
+   td Description
+   td Priority 
+   each item,i in list
+    tr
+     td= item.id
+     td= item.description
+     td= item.priority
+ form(action="/manipulate" method="POST",id="choice_submit")
+  input(name="description",type="text")
+ p
+  i Format : Description,Priority
+  br
+  i Low : 0-5 Med : 5-10 High : 10-20
+ script.
+  function enterButtonCall(event)
+  {
+    if (event.which == 13) {
+        var text = document.getElementById("choice").value;
+        alert("called"+text);
+        document.getElementById("choice_submit").submit();
+    }
+
+  }
+  document.getElementById("choice").addEventListener("keypress",enterButtonCall);
