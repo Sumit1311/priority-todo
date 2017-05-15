@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var priority_todo=require('./priority_todo.js');
-var id=0;
 /* GET home page. */
-router.get('/index', function(req, res, next) {
+router.get('/', function(req, res, next) {
   var list=priority_todo.getTodoList();
   res.render('index', { title: 'Todo List',list : list});
 });
@@ -25,14 +24,14 @@ router.post('/manipulate',function(req,res,next) {
     }
     else if(tokens.length == 2)
     {
+       var id=priority_todo.getNextId(); 
        priority_todo.addItemToList(list,{
-            "id":id+1,
+            "id":id,
             "description":tokens[0],
             "priority":parseInt(tokens[1])
        }); 
     }
-    id++;
-    res.redirect("/index");
+    res.redirect("/");
 });
 
 

@@ -24,8 +24,21 @@ function truncate()
     fs.writeFileSync("todo.list.backup",JSON.stringify(readAll()));
     writeAll([]);
 }
+
+function getId()
+{
+    return parseInt(fs.readFileSync(".id","utf8"));
+}
+
+function writeId(id)
+{
+    fs.writeFileSync(".id",""+id);
+}
+
 module.exports = {
     readAllRecords : readAll,
     writeAllRecords : writeAll,
-    truncate : truncate
+    truncate : truncate,
+    getId : getId,
+    writeId : writeId
 };

@@ -46,9 +46,17 @@ function removeItem(list,id)
     return list;
 }
 
+function getId()
+{
+    var id=persistence.getId();
+    id++;
+    persistence.writeId(id);
+    return id;
+}
 
 module.exports = {
     getTodoList : getTodo,
     addItemToList : addItem,
-    removeItemFromList : removeItem
+    removeItemFromList : removeItem,
+    getNextId : getId
 }
