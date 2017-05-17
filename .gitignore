@@ -2,3 +2,4 @@ node_modules/
 **/*.swp
 .id
 todo.list
+**/*.log
