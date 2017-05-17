@@ -37,7 +37,7 @@ function addItem(list, item)
 
 function removeItem(list,id)
 {
-    var index = list.find(function(element){
+    var index = list.findIndex(function(element){
         return element.id == id;
     });
     list.splice(index,1);
